@@ -1,3 +1,16 @@
+# @akliegman/design-system
+
+## Overview
+
+This project is designed to showcase a modern web design-system built with Next.js and Storybook.
+
+## Features
+
+- **Next.js**: Utilizing the latest features of Next.js for fast, server-rendered React applications.
+- **Responsive Design**: Crafted to provide an optimal viewing experience across a wide range of devices.
+- **SEO Friendly**: Implemented with best practices in SEO, making your site friendly to search engines.
+- **Performance Optimized**: Leveraging Next.js optimizations for fast loading times.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
