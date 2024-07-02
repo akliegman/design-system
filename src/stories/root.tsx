@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
-import clsx from "clsx";
+import { useEffect, useState } from "react";
 
 import { Poppins } from "next/font/google";
 
-import "../app/globals.scss";
-import styles from "./styles.module.scss";
+import { getColorVariables } from "@/utils/colors";
+import { Color } from "@/global";
 
-import { COLORS } from "@/constants";
-import { setColors } from "@/utils/colors";
+import { colors } from "../../data";
+
+import "../app/globals.scss";
+import { LoadingOverlay } from "@/components/loadingOverlay";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -20,14 +21,22 @@ function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    const styles = { ...setColors(COLORS) };
-    Object.entries(styles).forEach(([name, value]) => {
+    const colorsArray = getColorVariables(colors);
+    Object.entries(colorsArray).forEach(([name, value]) => {
       document.documentElement.style.setProperty(name, value);
     });
+    setIsLoading(false);
   }, []);
 
-  return <div className={clsx(styles["root"], font.className)}>{children}</div>;
+  return (
+    <div className={font.className}>
+      {children}
+      <LoadingOverlay isLoading={isLoading} />
+    </div>
+  );
 }
 
 export default function RootStoryDecorator(Story: () => React.ReactNode) {

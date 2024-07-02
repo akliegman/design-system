@@ -1,18 +1,16 @@
 import tinyColor from "tinycolor2";
 
-export interface Colors {
-  [key: string]: { COLOR: string; SHADE: number };
-}
+import { Color } from "@/global";
 
 interface GenerateShadesProps {
-  colors: Colors;
+  colors: Color[];
   step?: number;
 }
 
 const generateShades = ({ colors, step = 8 }: GenerateShadesProps) => {
   let shades = {};
-  Object.entries(colors).forEach(([name, colorProps]) => {
-    const { COLOR: color, SHADE: shade } = colorProps;
+  colors?.map((colorObj) => {
+    const { color, shade, name } = colorObj;
     const colorName = name.toLowerCase();
 
     const colorInstance = tinyColor(color);
@@ -50,7 +48,7 @@ const generateShades = ({ colors, step = 8 }: GenerateShadesProps) => {
   return shades;
 };
 
-const setColors = (colors: Colors) => {
+const getColorVariables = (colors: Color[]) => {
   const shades = generateShades({ colors }) as Record<string, string>;
   let styles = {} as Record<string, string>;
 
@@ -58,8 +56,8 @@ const setColors = (colors: Colors) => {
     styles[`--color-${name}`] = color;
   });
 
-  Object.entries(colors).forEach(([name, colorProps]) => {
-    const { COLOR: color, SHADE: shade } = colorProps;
+  colors.map((colorObj) => {
+    const { color, shade, name } = colorObj;
     const colorName = name.toLowerCase();
 
     styles[`--color-${colorName}`] = color;
@@ -68,4 +66,4 @@ const setColors = (colors: Colors) => {
   return styles;
 };
 
-export { generateShades, setColors };
+export { generateShades, getColorVariables };
