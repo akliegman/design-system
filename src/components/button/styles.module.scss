@@ -199,9 +199,9 @@ $button-config: (
   border-radius: map-get($button-config, "radius", "default");
   height: map-get($button-config, "size", "default", "height");
   transition:
-    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color 0.2s var(--transition-timing-function),
+    color 0.2s var(--transition-timing-function),
+    border-color 0.2s var(--transition-timing-function);
 
   @media (hover: hover) {
     &:hover {

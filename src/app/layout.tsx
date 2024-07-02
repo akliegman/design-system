@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import type { Colors } from "@/utils/colors";
 
 import { Poppins } from "next/font/google";
 
-import { setColors } from "@/utils/colors";
-
-import { COLORS } from "@/constants";
+import { Providers } from "@/providers";
 
 import "./globals.scss";
 
@@ -21,17 +18,16 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  colors,
   children,
 }: Readonly<{
-  colors?: Colors;
+  colors: any;
   children: React.ReactNode;
 }>) {
-  const styles = { ...setColors(COLORS) };
-
   return (
-    <html lang="en" style={styles} className={font.variable}>
-      <body>{children}</body>
+    <html lang="en" className={font.variable}>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
