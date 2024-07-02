@@ -1,8 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Colors } from "@/utils/colors";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Poppins } from "next/font/google";
+
+import { setColors } from "@/utils/colors";
+
+import { COLORS } from "@/constants";
+
+import "./globals.scss";
+
+const font = Poppins({
+  subsets: ["latin"],
+  variable: "--font-family-base",
+  weight: ["400", "500", "600"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -10,13 +21,17 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  colors,
   children,
 }: Readonly<{
+  colors?: Colors;
   children: React.ReactNode;
 }>) {
+  const styles = { ...setColors(COLORS) };
+
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" style={styles} className={font.variable}>
+      <body>{children}</body>
     </html>
   );
 }

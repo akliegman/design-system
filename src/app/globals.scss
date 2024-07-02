@@ -1,0 +1,87 @@
+$spacing-step: 0.25rem;
+
+:root {
+  @for $i from 1 through 12 {
+    --spacing-#{$i}: #{$i * $spacing-step};
+  }
+  --font-size-base: 1rem;
+  --font-size-small: 0.875rem;
+  --font-size-large: 1.25rem;
+  --font-size-display: 4rem;
+  --font-size-h1: 2.25rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.25rem;
+  --font-size-h4: 1rem;
+  --font-size-h5: 0.875rem;
+  --font-size-h6: 0.75rem;
+
+  --line-height-base: 1.5;
+  --line-height-small: 1.25;
+  --line-height-large: 1.75;
+  --line-height-h1: 2.5;
+  --line-height-h2: 2;
+  --line-height-h3: 1.75;
+  --line-height-h4: 1.5;
+  --line-height-h5: 1.25;
+  --line-height-h6: 1;
+
+  --link-color: var(--color-primary-600);
+  --link-color-hover: var(--color-primary-800);
+  --link-color-active: var(--color-primary-900);
+
+  --text-color: var(--color-neutral-600);
+  --background-color: white;
+}
+
+// reset
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  font-family: var(--font-family-base);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+a,
+button {
+  text-decoration: none;
+}
+
+a[href] {
+  color: var(--link-color);
+  &:hover {
+    color: var(--link-color-hover);
+  }
+  &:active {
+    color: var(--link-color-active);
+  }
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+}

@@ -1,0 +1,307 @@
+$button-config: (
+  variant: (
+    primary: (
+      background-color: var(--color-primary-600),
+      color: white,
+      border-color: var(--color-primary-600),
+      hover: (
+        border-color: var(--color-primary-800),
+        background-color: var(--color-primary-800),
+        color: white,
+      ),
+    ),
+    secondary: (
+      background-color: var(--color-secondary-300),
+      color: white,
+      border-color: var(--color-secondary-300),
+      hover: (
+        border-color: var(--color-secondary-500),
+        background-color: var(--color-secondary-500),
+        color: white,
+      ),
+    ),
+    tertiary: (
+      background-color: var(--color-tertiary-700),
+      color: white,
+      border-color: var(--color-tertiary-700),
+      hover: (
+        border-color: var(--color-tertiary-900),
+        background-color: var(--color-tertiary-900),
+        color: white,
+      ),
+    ),
+    primaryOutline: (
+      background-color: transparent,
+      color: var(--color-primary-600),
+      border-color: var(--color-primary-600),
+      hover: (
+        background-color: var(--color-primary-100),
+        color: var(--color-primary-800),
+        border-color: var(--color-primary-800),
+      ),
+    ),
+    secondaryOutline: (
+      background-color: transparent,
+      color: var(--color-secondary-300),
+      border-color: var(--color-secondary-300),
+      hover: (
+        background-color: var(--color-secondary-100),
+        color: var(--color-secondary-500),
+        border-color: var(--color-secondary-500),
+      ),
+    ),
+    tertiaryOutline: (
+      background-color: transparent,
+      color: var(--color-tertiary-700),
+      border-color: var(--color-tertiary-700),
+      hover: (
+        background-color: var(--color-tertiary-100),
+        color: var(--color-tertiary-900),
+        border-color: var(--color-tertiary-900),
+      ),
+    ),
+    primaryInverted: (
+      background-color: white,
+      color: var(--color-primary-600),
+      border-color: white,
+      hover: (
+        background-color: var(--color-primary-100),
+        color: var(--color-primary-600),
+        border-color: var(--color-primary-100),
+      ),
+    ),
+    secondaryInverted: (
+      background-color: white,
+      color: var(--color-secondary-300),
+      border-color: white,
+      hover: (
+        background-color: var(--color-secondary-100),
+        color: var(--color-secondary-300),
+        border-color: var(--color-secondary-100),
+      ),
+    ),
+    tertiaryInverted: (
+      background-color: white,
+      color: var(--color-tertiary-700),
+      border-color: white,
+      hover: (
+        background-color: var(--color-tertiary-100),
+        color: var(--color-tertiary-700),
+        border-color: var(--color-tertiary-100),
+      ),
+    ),
+    disabled: (
+      background-color: var(--color-neutral-200),
+      color: var(--color-neutral-400),
+      border-color: var(--color-neutral-200),
+      hover: (
+        background-color: var(--color-neutral-200),
+        border-color: var(--color-neutral-200),
+        color: var(--color-neutral-400),
+      ),
+    ),
+    default: (
+      background-color: var(--color-neutral-100),
+      color: var(--link-color),
+      border-color: var(--color-neutral-100),
+      hover: (
+        background-color: var(--color-neutral-300),
+        color: var(--link-color-hover),
+        border-color: var(--color-neutral-300),
+      ),
+    ),
+  ),
+  size: (
+    small: (
+      font-size: var(--font-size-small),
+      line-height: var(--line-height-small),
+      padding-y: var(--spacing-1),
+      padding-x: var(--spacing-2),
+      border-radius: var(--spacing-1),
+      height:
+        calc(
+          (var(--font-size-small) * var(--line-height-small)) +
+            (var(--spacing-1) * 2)
+        ),
+    ),
+    medium: (
+      font-size: var(--font-size-base),
+      line-height: var(--line-height-base),
+      padding-y: var(--spacing-2),
+      padding-x: var(--spacing-3),
+      border-radius: var(--spacing-2),
+      height:
+        calc(
+          (var(--font-size-base) * var(--line-height-base)) +
+            (var(--spacing-2) * 2)
+        ),
+    ),
+    large: (
+      font-size: var(--font-size-large),
+      line-height: var(--line-height-large),
+      padding-y: var(--spacing-3),
+      padding-x: var(--spacing-4),
+      border-radius: var(--spacing-3),
+      height:
+        calc(
+          (var(--font-size-large) * var(--line-height-large)) +
+            (var(--spacing-3) * 2)
+        ),
+    ),
+    default: (
+      font-size: var(--font-size-base),
+      line-height: var(--line-height-base),
+      padding-y: var(--spacing-2),
+      padding-x: var(--spacing-3),
+      border-radius: var(--spacing-2),
+      height:
+        calc(
+          (var(--font-size-base) * var(--line-height-base)) +
+            (var(--spacing-2) * 2)
+        ),
+    ),
+  ),
+  radius: (
+    none: 0,
+    small: var(--spacing-1),
+    medium: var(--spacing-2),
+    large: var(--spacing-4),
+    default: var(--spacing-2),
+    pill:
+      calc(
+        (
+          (var(--font-size-base) * var(--line-height-base)) +
+            (var(--spacing-2) * 2) * 0.5
+        )
+      ),
+  ),
+);
+
+.button {
+  border: 2px solid
+    map-get($button-config, "variant", "default", "border-color");
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: map-get(
+    $button-config,
+    "variant",
+    "default",
+    "background-color"
+  );
+  gap: calc(map-get($button-config, "size", "default", "padding-x") * 0.75);
+  color: map-get($button-config, "variant", "default", "color");
+  font-size: map-get($button-config, "size", "default", "font-size");
+  line-height: map-get($button-config, "size", "default", "line-height");
+  padding: map-get($button-config, "size", "default", "padding-y")
+    map-get($button-config, "size", "default", "padding-x");
+  border-radius: map-get($button-config, "radius", "default");
+  height: map-get($button-config, "size", "default", "height");
+  transition:
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: map-get(
+        $button-config,
+        "variant",
+        "default",
+        "hover",
+        "background-color"
+      );
+      color: map-get($button-config, "variant", "default", "hover", "color");
+      border-color: map-get(
+        $button-config,
+        "variant",
+        "default",
+        "hover",
+        "border-color"
+      );
+    }
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+
+  @each $variant, $map in map-get($button-config, variant) {
+    @if $variant != "disabled" or $variant != "none" {
+      &.variant-#{$variant} {
+        background-color: map-get($map, "background-color");
+        color: map-get($map, "color");
+        border-color: map-get($map, "border-color");
+
+        @media (hover: hover) {
+          &:hover {
+            background-color: map-get($map, "hover", "background-color");
+            color: map-get($map, "hover", "color");
+            border-color: map-get($map, "hover", "border-color");
+          }
+        }
+      }
+    }
+  }
+
+  @each $size, $map in map-get($button-config, size) {
+    &.size-#{$size} {
+      font-size: map-get($map, "font-size");
+      line-height: map-get($map, "line-height");
+      padding: map-get($map, "padding-y") map-get($map, "padding-x");
+      border-radius: map-get($button-config, "radius", $size);
+      height: map-get($map, "height");
+      gap: calc(map-get($map, "padding-x") * 0.75);
+
+      &.fixed-width {
+        width: map-get($map, "height");
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      @each $radius, $value in map-get($button-config, radius) {
+        @if $radius == "pill" {
+          &.radius-#{$radius} {
+            border-radius: calc(
+              (
+                  map-get($button-config, "size", $size, "font-size") *
+                    map-get($button-config, "size", $size, "line-height")
+                ) +
+                (map-get($button-config, "size", $size, "padding-y") * 2) *
+                0.5
+            );
+          }
+        } @else {
+          &.radius-#{$radius} {
+            border-radius: $value;
+          }
+        }
+      }
+    }
+  }
+
+  @each $radius, $value in map-get($button-config, radius) {
+    &.radius-#{$radius} {
+      border-radius: $value;
+    }
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: map-get(
+      $button-config,
+      "variant",
+      "disabled",
+      "background-color"
+    ) !important;
+    color: map-get($button-config, "variant", "disabled", "color") !important;
+    border-color: map-get(
+      $button-config,
+      "variant",
+      "disabled",
+      "border-color"
+    ) !important;
+    cursor: not-allowed;
+  }
+}
