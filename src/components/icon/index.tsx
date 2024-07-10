@@ -16,7 +16,7 @@ export interface IconProps {
   icon: IconType;
 }
 
-const Icon = (props: IconProps) => {
+export const Icon = (props: IconProps) => {
   const {
     className,
     size = "medium",
@@ -40,5 +40,3 @@ const Icon = (props: IconProps) => {
     </span>
   );
 };
-
-export { Icon };
