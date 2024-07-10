@@ -1,0 +1,91 @@
+@import "../../scss/config";
+
+.link {
+  position: relative;
+
+  &[href] {
+    color: var(--link-color);
+    transition: color var(--transition-duration)
+      var(--transition-timing-function);
+
+    &.with-underline {
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 0;
+        height: var(--border-width);
+        background-color: currentColor;
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--link-color-hover);
+
+        &.with-underline {
+          &::after {
+            width: 100%;
+            transition: width var(--transition-duration)
+              var(--transition-timing-function);
+          }
+        }
+      }
+
+      &:active {
+        color: var(--link-color-active);
+      }
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    @each $variant in $variants {
+      @if $variant != "none" {
+        &.variant-#{$variant} {
+          color: var(--color-#{$variant}-700);
+
+          @media (hover: hover) {
+            &:hover {
+              color: var(--color-#{$variant}-1000);
+            }
+          }
+
+          &:active {
+            color: var(--color-#{$variant}-1100);
+          }
+
+          &-light {
+            color: var(--color-#{$variant}-100);
+
+            @media (hover: hover) {
+              &:hover {
+                color: var(--color-#{$variant}-300);
+              }
+            }
+
+            &:active {
+              color: var(--color-#{$variant}-400);
+            }
+          }
+        }
+      }
+    }
+
+    &[aria-disabled="true"],
+    &.disabled {
+      color: var(--color-neutral-400) !important;
+      cursor: not-allowed;
+      @media (hover: hover) {
+        &:hover {
+          &.with-underline {
+            &::after {
+              width: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

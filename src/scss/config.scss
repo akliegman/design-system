@@ -1,0 +1,54 @@
+@function merge-lists($list1, $list2) {
+  $merged-list: ();
+
+  @each $item in $list1 {
+    $merged-list: append($merged-list, $item);
+  }
+
+  @each $item in $list2 {
+    $merged-list: append($merged-list, $item);
+  }
+
+  @return $merged-list;
+}
+
+@function merge-button-variants($variants, $button-additional-types) {
+  $merged-variants: ();
+
+  @each $variant in $variants {
+    $merged-variants: append($merged-variants, $variant);
+
+    @if $variant != "none" {
+      @each $additional-type in $button-additional-types {
+        $merged-variants: append(
+          $merged-variants,
+          $variant + "-" + $additional-type
+        );
+      }
+    }
+  }
+
+  @return $merged-variants;
+}
+
+$variants: (
+  "none",
+  "primary",
+  "secondary",
+  "tertiary",
+  "neutral",
+  "success",
+  "warning",
+  "danger",
+  "info"
+);
+
+$sizes: ("small", "medium", "large");
+
+$heading-levels: ("display", "h1", "h2", "h3", "h4", "h5", "h6");
+
+$paragraph-levels: $sizes;
+
+$icon-levels: merge-lists($sizes, $heading-levels);
+
+$orientations: ("horizontal", "vertical");

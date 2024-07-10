@@ -1,18 +1,15 @@
 import * as ReactIcons from "react-icons/fa";
 
-import { IconButton, LinkIconButton } from "@/components/iconButton";
-
-import {
-  IconButtonProps,
-  LinkIconButtonProps,
-} from "@/components/iconButton/definitions";
+import { IconButton, LinkIconButton } from "@/components";
+import { IconButtonProps } from "@/components/buttons/IconButton";
+import { LinkIconButtonProps } from "@/components/buttons/LinkIconButton";
 
 const iconOptionsMapping = Object.entries(ReactIcons).reduce(
   (acc, [key, value]) => {
     acc[key] = value;
     return acc;
   },
-  {} as Record<string, any>
+  {} as Record<string, any>,
 );
 
 const config = {

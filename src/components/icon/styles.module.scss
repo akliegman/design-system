@@ -1,42 +1,29 @@
-$icon-config: (
-  size: (
-    small: var(--font-size-small),
-    medium: var(--font-size-base),
-    large: var(--font-size-large),
-    display: var(--font-size-display),
-    default: var(--font-size-base),
-    h1: var(--font-size-h1),
-    h2: var(--font-size-h2),
-    h3: var(--font-size-h3),
-    h4: var(--font-size-h4),
-    h5: var(--font-size-h5),
-    h6: var(--font-size-h6),
-  ),
-  variant: (
-    none: inherit,
-    default: inherit,
-    primary: var(--color-primary-600),
-    secondary: var(--color-secondary-300),
-    tertiary: var(--color-tertiary-700),
-  ),
-);
+@import "../../scss/mixins";
+@import "../../scss/config";
 
 .icon {
-  font-size: map-get($icon-config, size, default);
-  color: map-get($icon-config, variant, default);
+  color: inherit;
   display: inline-flex;
+  max-width: fit-content;
+  transition: var(--skeleton-transition);
 
-  @each $size, $value in map-get($icon-config, size) {
-    &.size-#{$size} {
-      font-size: $value;
+  &.loading {
+    @include loading-skeleton;
+  }
+
+  @each $variant in $variants {
+    &.variant-#{$variant} {
+      @if $variant == "none" {
+        color: inherit;
+      } @else {
+        color: var(--text-color-#{$variant});
+      }
     }
   }
 
-  @each $variant, $value in map-get($icon-config, variant) {
-    @if $variant != none or $variant != default {
-      &.variant-#{$variant} {
-        color: $value;
-      }
+  @each $level in $icon-levels {
+    &.level-#{$level} {
+      font-size: var(--font-size-#{$level});
     }
   }
 }

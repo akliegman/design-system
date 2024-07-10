@@ -1,0 +1,250 @@
+@import "../../scss/mixins";
+@import "../../scss/config";
+
+.button {
+  transition:
+    background-color var(--transition-duration)
+      var(--transition-timing-function),
+    color var(--transition-duration) var(--transition-timing-function),
+    border-color var(--transition-duration) var(--transition-timing-function),
+    var(--skeleton-transition-property) var(--skeleton-transition-duration)
+      var(--skeleton-transition-timing-function);
+
+  border: var(--border-width) solid var(--color-neutral-100);
+  font-weight: var(--button-font-weight);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-neutral-100);
+  color: var(--color-primary-700);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  max-width: fit-content;
+  gap: calc(var(--spacing-3) * 0.75);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--spacing-2);
+  height: calc(
+    (var(--font-size-base) * var(--line-height-base)) + var(--spacing-2) +
+      var(--spacing-2) + var(--border-width) + var(--border-width)
+  );
+
+  &:disabled,
+  &[aria-disabled="true"],
+  &.disabled {
+    background-color: var(--color-neutral-200) !important;
+    color: var(--color-neutral-400) !important;
+    border-color: var(--color-neutral-200) !important;
+    cursor: not-allowed;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-neutral-300);
+      color: var(--color-primary-1000);
+      border-color: var(--color-neutral-300);
+    }
+  }
+
+  &:active {
+    background-color: var(--color-neutral-400);
+    color: var(--color-primary-1000);
+    border-color: var(--color-neutral-400);
+  }
+}
+
+.loading {
+  @include loading-skeleton;
+}
+
+@each $orientation in $orientations {
+  .orientation-#{$orientation} {
+    @if $orientation == "horizontal" {
+      flex-direction: row;
+    } @else {
+      flex-direction: column;
+      height: auto;
+      gap: calc(var(--spacing-3) * 0.375);
+
+      &:not(.equal-height-width) {
+        height: auto;
+      }
+    }
+  }
+}
+
+@each $variant in $variants {
+  @if $variant != "none" {
+    .variant-#{$variant} {
+      background-color: var(--color-#{$variant}-700);
+      color: var(--color-white);
+      border-color: var(--color-#{$variant}-700);
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(--color-#{$variant}-1000);
+          color: var(--color-#{$variant}-100);
+          border-color: var(--color-#{$variant}-1000);
+        }
+      }
+
+      &:active {
+        background-color: var(--color-#{$variant}-1100);
+        color: var(--color-#{$variant}-100);
+        border-color: var(--color-#{$variant}-1100);
+      }
+
+      &-inverted {
+        background-color: var(--color-#{$variant}-100);
+        color: var(--color-#{$variant}-700);
+        border-color: var(--color-#{$variant}-100);
+
+        @media (hover: hover) {
+          &:hover {
+            background-color: var(--color-#{$variant}-200);
+            color: var(--color-#{$variant}-1000);
+            border-color: var(--color-#{$variant}-200);
+          }
+        }
+
+        &:active {
+          background-color: var(--color-#{$variant}-200);
+          color: var(--color-#{$variant}-1000);
+          border-color: var(--color-#{$variant}-200);
+        }
+      }
+
+      &-outline {
+        background-color: transparent;
+        color: var(--color-#{$variant}-700);
+        border-color: var(--color-#{$variant}-700);
+
+        @media (hover: hover) {
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+            color: var(--color-#{$variant}-1000);
+            border-color: var(--color-#{$variant}-1000);
+          }
+        }
+
+        &:active {
+          background-color: rgba(0, 0, 0, 0.05);
+          color: var(--color-#{$variant}-1000);
+          border-color: var(--color-#{$variant}-1000);
+        }
+      }
+    }
+  }
+}
+
+.size-small {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--spacing-1);
+  height: calc(
+    (var(--font-size-small) * var(--line-height-small)) + var(--spacing-1) +
+      var(--spacing-1) + var(--border-width) + var(--border-width)
+  );
+  gap: calc(var(--spacing-1) * 0.75);
+
+  &.equal-height-width {
+    width: calc(
+      (var(--font-size-small) * var(--line-height-small)) + var(--spacing-1) +
+        var(--spacing-1) + var(--border-width) + var(--border-width)
+    );
+  }
+
+  &.orientation-vertical {
+    gap: calc(var(--spacing-1) * 0.375);
+  }
+}
+
+.equal-height-width {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: unset;
+}
+
+.radius-none {
+  border-radius: 0;
+}
+
+.radius-small {
+  border-radius: var(--spacing-1);
+}
+
+.radius-medium {
+  border-radius: var(--spacing-2);
+}
+
+.radius-large {
+  border-radius: var(--spacing-4);
+}
+
+.radius-pill {
+  border-radius: calc(
+    (
+      var(--font-size-base) + var(--border-width) + var(--border-width) +
+        (var(--spacing-2) + var(--spacing-2)) * 0.5
+    )
+  );
+}
+
+.full-width {
+  width: 100%;
+  max-width: 100%;
+}
+
+.with-shadow {
+  box-shadow: var(--box-shadow-medium);
+}
+
+.size-medium {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--spacing-2);
+  height: calc(
+    (var(--font-size-base) * var(--line-height-base)) + var(--spacing-2) +
+      var(--spacing-2) + var(--border-width) + var(--border-width)
+  );
+  gap: calc(var(--spacing-2) * 0.75);
+
+  &.equal-height-width {
+    width: calc(
+      (var(--font-size-base) * var(--line-height-base)) + var(--spacing-2) +
+        var(--spacing-2) + var(--border-width) + var(--border-width)
+    );
+  }
+
+  &.orientation-vertical {
+    gap: calc(var(--spacing-2) * 0.375);
+  }
+}
+
+.size-large {
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-large);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--spacing-3);
+  height: calc(
+    (var(--font-size-large) * var(--line-height-large)) + var(--spacing-3) +
+      var(--spacing-3) + var(--border-width) + var(--border-width)
+  );
+  gap: calc(var(--spacing-3) * 0.75);
+
+  &.equal-height-width {
+    width: calc(
+      (var(--font-size-large) * var(--line-height-large)) + var(--spacing-3) +
+        var(--spacing-3) + var(--border-width) + var(--border-width)
+    );
+  }
+
+  &.orientation-vertical {
+    gap: calc(var(--spacing-3) * 0.375);
+  }
+}

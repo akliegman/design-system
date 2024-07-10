@@ -1,11 +1,13 @@
 "use client";
 
-import { ColorsProvider } from "./colors";
+import { ThemeProvider } from "@/providers/theme";
 
-import { ProvidersProps } from "./definitions";
+export interface ProvidersProps {
+  children: React.ReactNode;
+}
 
 const Providers = ({ children }: ProvidersProps) => {
-  return <ColorsProvider>{children}</ColorsProvider>;
+  return <ThemeProvider>{children}</ThemeProvider>;
 };
 
 export { Providers };
