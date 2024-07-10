@@ -1,15 +1,14 @@
 import * as ReactIcons from "react-icons/fa";
 
-import { Button, LinkButton } from "@/components/button";
-
-import { ButtonProps, LinkButtonProps } from "@/components/button/definitions";
+import { Button } from "@/components";
+import { ButtonProps } from "@/components/buttons/Button";
 
 const iconOptionsMapping = Object.entries(ReactIcons).reduce(
   (acc, [key, value]) => {
     acc[key] = value;
     return acc;
   },
-  {} as Record<string, any>
+  {} as Record<string, any>,
 );
 
 const config = {
@@ -33,14 +32,18 @@ const config = {
   } as Record<string, any>,
   args: {
     isDisabled: false,
+    withShadow: false,
+    fullWidth: false,
     text: "Button",
+    variant: "primary",
+    size: "medium",
+    radius: "medium",
+    iconLeading: "",
+    iconTrailing: "",
+    orientation: "horizontal",
   },
 };
 
 export default config;
 
-export const Regular_Button = (args: ButtonProps) => <Button {...args} />;
-
-export const Link_Button = (args: LinkButtonProps) => (
-  <LinkButton {...args} href="https://google.com" target="_blank" />
-);
+export const Default = (args: ButtonProps) => <Button {...args} />;

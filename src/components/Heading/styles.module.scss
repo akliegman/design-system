@@ -1,0 +1,32 @@
+@import "../../scss/config";
+
+.heading {
+  display: inline;
+  font-family: var(--font-family-display);
+
+  &.loading {
+    color: var(--text-color);
+  }
+
+  @each $variant in $variants {
+    &.variant-#{$variant} {
+      @if $variant == "none" {
+        color: var(--text-color);
+
+        &.level-display {
+          color: var(--text-color-display);
+        }
+      } @else {
+        color: var(--text-color-#{$variant});
+      }
+    }
+  }
+
+  @each $level in $heading-levels {
+    &.level-#{$level} {
+      font-size: var(--font-size-#{$level});
+      line-height: var(--line-height-#{$level});
+      font-weight: var(--font-weight-#{$level});
+    }
+  }
+}

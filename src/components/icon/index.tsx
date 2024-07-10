@@ -1,25 +1,37 @@
 "use client";
 
 import clsx from "clsx";
+import { IconType } from "react-icons";
 import { FaBeer } from "react-icons/fa";
 
-import { IconProps } from "./definitions";
+import { IconLevels, Variants } from "@/global";
+import { useTheme } from "@/providers/theme";
 
-import styles from "./styles.module.scss";
+import styles from "@/components/Icon/styles.module.scss";
+
+export interface IconProps {
+  className?: string;
+  size?: keyof IconLevels;
+  variant?: keyof Variants;
+  icon: IconType;
+}
 
 const Icon = (props: IconProps) => {
   const {
     className,
     size = "medium",
-    variant,
+    variant = "none",
     icon: ReactIcon = FaBeer,
   } = props;
 
+  const { themeIsMounted } = useTheme();
+
   const rootClassNames = clsx(
     styles[`icon`],
-    size && styles[`size-${size}`],
+    !themeIsMounted && styles[`loading`],
+    size && styles[`level-${size}`],
     variant && styles[`variant-${variant}`],
-    className
+    className,
   );
 
   return (

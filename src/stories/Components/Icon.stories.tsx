@@ -1,14 +1,14 @@
-import { Icon } from "@/components/icon";
-import type { IconProps } from "@/components/icon/definitions";
-
 import * as ReactIcons from "react-icons/fa";
+
+import { Icon } from "@/components";
+import { IconProps } from "@/components/Icon";
 
 const iconOptionsMapping = Object.entries(ReactIcons).reduce(
   (acc, [key, value]) => {
     acc[key] = value;
     return acc;
   },
-  {} as Record<string, any>
+  {} as Record<string, any>,
 );
 
 const config = {

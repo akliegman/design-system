@@ -2,11 +2,23 @@
 
 import clsx from "clsx";
 
-import { Icon } from "@/components/icon";
+import { Icon } from "@/components";
+import { CustomButtonProps } from "@/components/buttons/Button";
 
-import { ButtonContentProps } from "./definitions";
+export interface ButtonContentProps
+  extends Omit<
+    CustomButtonProps,
+    | "additionalClassName"
+    | "className"
+    | "fullWidth"
+    | "variant"
+    | "radius"
+    | "children"
+  > {
+  styles?: Record<string, string>;
+}
 
-const ButtonContent = (props: ButtonContentProps) => {
+export const ButtonContent = (props: ButtonContentProps) => {
   const { iconLeading, iconTrailing, size, styles, text } = props;
   return (
     <>
@@ -28,5 +40,3 @@ const ButtonContent = (props: ButtonContentProps) => {
     </>
   );
 };
-
-export { ButtonContent };

@@ -1,10 +1,17 @@
 import { Metadata } from "next";
-import styles from "./page.module.scss";
+
+import { HomeButton } from "@/components/page";
+
+import styles from "@/app/styles.module.scss";
 
 export const metadata: Metadata = {
   title: "Home",
 };
 
 export default function Home() {
-  return <main className={styles["main"]}>Hello world!</main>;
+  return (
+    <main className={styles["main"]}>
+      <HomeButton />
+    </main>
+  );
 }
