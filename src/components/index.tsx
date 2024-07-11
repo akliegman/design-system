@@ -1,6 +1,6 @@
 import { Heading } from "@/components/Heading";
-import { Icon } from "@/components/Icon";
 import { Link } from "@/components/Link";
+import { Icon } from "@/components/ReactIcon";
 import { Button } from "@/components/buttons/Button";
 import { IconButton } from "@/components/buttons/IconButton";
 import { LinkButton } from "@/components/buttons/LinkButton";
