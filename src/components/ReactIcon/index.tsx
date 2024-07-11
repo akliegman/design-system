@@ -7,7 +7,7 @@ import { FaBeer } from "react-icons/fa";
 import { IconLevels, Variants } from "@/global";
 import { useTheme } from "@/providers/theme";
 
-import styles from "@/components/Icon/styles.module.scss";
+import styles from "@/components/ReactIcon/styles.module.scss";
 
 export interface IconProps {
   className?: string;

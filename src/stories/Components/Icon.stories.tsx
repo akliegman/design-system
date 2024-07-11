@@ -1,7 +1,7 @@
 import * as ReactIcons from "react-icons/fa";
 
 import { Icon } from "@/components";
-import { IconProps } from "@/components/Icon";
+import { IconProps } from "@/components/ReactIcon";
 
 const iconOptionsMapping = Object.entries(ReactIcons).reduce(
   (acc, [key, value]) => {
