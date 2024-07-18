@@ -25,7 +25,7 @@ export interface BreadcrumbsProps<T> extends Omit<ReactAriaBreadcrumbsProps<T>, 
   withUnderline?: boolean;
 }
 
-export const Breadcrumbs = (props: BreadcrumbsProps<ReactAriaBreadcrumbProps>) => {
+export const Breadcrumbs = (props: BreadcrumbsProps<BreadcrumbProps>) => {
   const {
     breadcrumbs = [],
     variant = "default",
