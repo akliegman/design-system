@@ -1,0 +1,29 @@
+@import "../../scss/mixins";
+@import "../../scss/config";
+
+.icon {
+  color: inherit;
+  display: inline-flex;
+  max-width: fit-content;
+  transition: var(--skeleton-transition);
+}
+
+.loading {
+  @include loading-skeleton;
+}
+
+@each $variant in $variants {
+  .variant-#{$variant} {
+    @if $variant == "default" {
+      color: inherit;
+    } @else {
+      color: var(--text-color-#{$variant});
+    }
+  }
+}
+
+@each $level in $icon-levels {
+  .level-#{$level} {
+    font-size: var(--font-size-#{$level});
+  }
+}

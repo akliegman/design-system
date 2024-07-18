@@ -8,25 +8,15 @@ import { CustomIconButtonProps } from "@/components/buttons/IconButton";
 export interface IconButtonContentProps
   extends Omit<
     CustomIconButtonProps,
-    | "additionalClassName"
-    | "className"
-    | "fullWidth"
-    | "variant"
-    | "radius"
-    | "children"
+    "additionalClassName" | "className" | "fullWidth" | "variant" | "radius" | "children"
   > {
   styles?: Record<string, string>;
 }
-const IconButtonContent = (props: IconButtonContentProps) => {
+
+export const IconButtonContent = (props: IconButtonContentProps) => {
   const { icon, size, styles } = props;
 
   return (
-    <Icon
-      icon={icon}
-      className={clsx(styles?.["icon"], styles?.["icon-leading"])}
-      size={size}
-    />
+    <Icon icon={icon} className={clsx(styles?.["icon"], styles?.["icon-leading"])} size={size} />
   );
 };
-
-export { IconButtonContent };

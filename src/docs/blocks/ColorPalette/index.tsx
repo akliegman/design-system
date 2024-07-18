@@ -21,23 +21,15 @@ export const ColorPalette = () => {
           );
 
           const half = Math.ceil(Object.keys(allColors).length / 2);
-          const lightColors = Object.fromEntries(
-            Object.entries(allColors).slice(0, half),
-          );
+          const lightColors = Object.fromEntries(Object.entries(allColors).slice(0, half));
 
-          const darkColors = Object.fromEntries(
-            Object.entries(allColors).slice(half),
-          );
+          const darkColors = Object.fromEntries(Object.entries(allColors).slice(half));
 
           let lightColorsTitle = `${name.charAt(0).toUpperCase()}${name.slice(1)}`;
 
           return (
             <Fragment key={name}>
-              <ColorItem
-                title={lightColorsTitle}
-                subtitle={""}
-                colors={lightColors}
-              />
+              <ColorItem title={lightColorsTitle} subtitle={""} colors={lightColors} />
               <ColorItem title={""} subtitle={""} colors={darkColors} />
             </Fragment>
           );

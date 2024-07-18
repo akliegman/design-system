@@ -11,8 +11,8 @@ $spacing-step: 0.25rem;
   --color-info: #4d908e;
   --color-white: #ffffff;
   --color-black: #111111;
-  --color-black-transparent: rgba(0, 0, 0, 0.5);
-  --color-white-transparent: rgba(255, 255, 255, 0.5);
+  --color-black-transparent: rgba(0, 0, 0, 0.25);
+  --color-white-transparent: rgba(255, 255, 255, 0.25);
 
   @for $i from 1 through 12 {
     --spacing-#{$i}: #{$i * $spacing-step};
@@ -77,9 +77,10 @@ $spacing-step: 0.25rem;
   --link-color-hover: var(--color-primary-1000);
   --link-color-active: var(--color-primary-1100);
 
+  --outline-width: 0.125rem;
   --outline-color-focus: var(--color-info-300);
 
-  --border-width: 0.09375rem;
+  --border-width: 0.0625rem;
   --border-color: var(--color-neutral-100);
 
   --skeleton-transition-property: opacity;
@@ -90,8 +91,8 @@ $spacing-step: 0.25rem;
   --box-shadow-medium: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
   --box-shadow-large: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 
-  --text-color: var(--color-neutral-600);
-  --text-color-display: var(--color-neutral-900);
+  --text-color: var(--color-neutral-800);
+  --text-color-display: var(--color-neutral-1100);
   --text-color-primary: var(--color-primary-900);
   --text-color-secondary: var(--color-secondary-900);
   --text-color-tertiary: var(--color-tertiary-900);
@@ -181,8 +182,8 @@ button {
 a,
 button {
   &:focus {
-    outline: var(--border-width) solid var(--outline-color-focus);
-    outline-offset: var(--border-width);
+    outline: var(--outline-width) solid var(--outline-color-focus);
+    outline-offset: var(--outline-width);
   }
 }
 

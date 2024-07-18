@@ -29,11 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={clsx(font.className, fontDisplay.variable)}
-      dir="ltr"
-    >
+    <html lang="en" className={clsx(font.className, fontDisplay.variable)} dir="ltr">
       <body>
         <Providers>{children}</Providers>
       </body>

@@ -47,10 +47,7 @@ const generateShades = ({ colors, step = 5 }: GenerateShadesProps) => {
         const percentageToLighten = ((shade - i) / 100) * step;
         shades = {
           ...shades,
-          [`${colorName}-${i}`]: colorInstance
-            .clone()
-            .lighten(percentageToLighten)
-            .toString(),
+          [`${colorName}-${i}`]: colorInstance.clone().lighten(percentageToLighten).toString(),
         };
       } else if (i === shade) {
         shades = {
@@ -61,10 +58,7 @@ const generateShades = ({ colors, step = 5 }: GenerateShadesProps) => {
         const percentageToDarken = ((i - shade) / 100) * step;
         shades = {
           ...shades,
-          [`${colorName}-${i}`]: colorInstance
-            .clone()
-            .darken(percentageToDarken)
-            .toString(),
+          [`${colorName}-${i}`]: colorInstance.clone().darken(percentageToDarken).toString(),
         };
       }
       i += 100;

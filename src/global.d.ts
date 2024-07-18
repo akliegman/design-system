@@ -22,7 +22,7 @@ export interface ParagraphLevels extends Sizes {}
 export interface IconLevels extends ParagraphLevels, HeadingLevels {}
 
 export interface Variants {
-  none: string;
+  default: string;
   primary: string;
   secondary: string;
   tertiary: string;

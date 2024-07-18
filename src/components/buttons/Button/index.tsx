@@ -16,18 +16,10 @@ export interface ButtonVariants extends Variants {
   "secondary-outline": string;
   "tertiary-outline": string;
   "neutral-outline": string;
-  "primary-inverted": string;
-  "secondary-inverted": string;
-  "tertiary-inverted": string;
-  "neutral-inverted": string;
   "success-outline": string;
-  "success-inverted": string;
   "danger-outline": string;
-  "danger-inverted": string;
   "warning-outline": string;
-  "warning-inverted": string;
   "info-outline": string;
-  "info-inverted": string;
 }
 
 export interface ButtonSizes extends Sizes {}
@@ -51,18 +43,17 @@ export interface CustomButtonProps {
   isDisabled?: boolean;
 }
 
-export interface ButtonProps
-  extends CustomButtonProps,
-    AriaButtonProps<"button"> {}
+export interface ButtonProps extends CustomButtonProps, AriaButtonProps<"button"> {}
 
 export const Button = (props: ButtonProps) => {
-  const { themeIsMounted } = useTheme();
+  const { themeIsMounted, prefersDark } = useTheme();
   return (
     <ReactAriaButton
       {...props}
       className={getButtonClassNames(props, {
         styles: styles,
         isLoading: !themeIsMounted,
+        prefersDark: prefersDark,
       })}
     >
       <ButtonContent {...props} styles={styles} />

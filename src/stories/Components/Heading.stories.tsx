@@ -10,7 +10,7 @@ const config = {
   } as Record<string, any>,
   args: {
     children: "Lorem ipsum dolor sit amet.",
-    variant: "none",
+    variant: "default",
     tag: "h1",
   },
 };

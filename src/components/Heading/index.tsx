@@ -14,13 +14,7 @@ export interface HeadingProps {
 }
 
 export const Heading = (props: HeadingProps) => {
-  const {
-    className,
-    variant = "none",
-    tag = "h1",
-    level: providedLevel,
-    children,
-  } = props;
+  const { className, variant = "default", tag = "h1", level: providedLevel, children } = props;
 
   const Element = tag;
 

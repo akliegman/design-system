@@ -1,0 +1,17 @@
+@import "../../scss/mixins";
+
+.loading {
+  @include loading-skeleton;
+}
+
+.prefers-dark {
+  --text-color: var(--color-neutral-200);
+  --text-color-display: var(--color-neutral-100);
+  --background-color: var(--color-neutral-1400);
+  --link-color: var(--color-primary-300);
+  --link-color-hover: var(--color-primary-600);
+  --link-color-active: var(--color-primary-700);
+
+  color: var(--text-color);
+  background-color: var(--background-color);
+}

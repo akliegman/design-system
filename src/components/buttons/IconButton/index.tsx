@@ -12,19 +12,14 @@ import { useTheme } from "@/providers/theme";
 import styles from "@/components/buttons/styles.module.scss";
 
 export interface CustomIconButtonProps
-  extends Omit<
-    CustomButtonProps,
-    "iconLeading" | "iconTrailing" | "orientation"
-  > {
+  extends Omit<CustomButtonProps, "iconLeading" | "iconTrailing" | "orientation"> {
   icon: IconType;
 }
 
-export interface IconButtonProps
-  extends CustomIconButtonProps,
-    AriaButtonProps<"button"> {}
+export interface IconButtonProps extends CustomIconButtonProps, AriaButtonProps<"button"> {}
 
 export const IconButton = (props: IconButtonProps) => {
-  const { themeIsMounted } = useTheme();
+  const { themeIsMounted, prefersDark } = useTheme();
   return (
     <ReactAriaButton
       {...props}
@@ -32,6 +27,7 @@ export const IconButton = (props: IconButtonProps) => {
         isIconButton: true,
         styles: styles,
         isLoading: !themeIsMounted,
+        prefersDark: prefersDark,
       })}
     >
       <IconButtonContent {...props} styles={styles} />
