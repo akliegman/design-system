@@ -9,6 +9,10 @@ initialize();
 
 const preview: Preview = {
   parameters: {
+    backgrounds: {
+      disable: true,
+    },
+    layout: "fullscreen",
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -28,6 +32,21 @@ const preview: Preview = {
     options: {
       storySort: {
         order: ["Theme", "Components"],
+      },
+    },
+  },
+  globalTypes: {
+    theme: {
+      description: "Dark mode.",
+      defaultValue: "dark",
+      toolbar: {
+        title: "Color Scheme Mode",
+        icon: "mirror",
+        items: [
+          { value: "light", title: "Light" },
+          { value: "dark", title: "Dark" },
+        ],
+        dynamicTitle: true,
       },
     },
   },

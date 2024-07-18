@@ -16,13 +16,14 @@ export interface LinkButtonProps extends CustomButtonProps, AriaLinkOptions {
 }
 
 export const LinkButton = (props: LinkButtonProps) => {
-  const { themeIsMounted } = useTheme();
+  const { themeIsMounted, prefersDark } = useTheme();
   return (
     <ReactAriaLink
       {...props}
       className={getButtonClassNames(props, {
         styles: styles,
         isLoading: !themeIsMounted,
+        prefersDark: prefersDark,
       })}
     >
       <ButtonContent {...props} styles={styles} />

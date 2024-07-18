@@ -1,8 +1,7 @@
 import * as ReactIcons from "react-icons/fa";
 
-import { IconButton, LinkIconButton } from "@/components";
+import { IconButton } from "@/components";
 import { IconButtonProps } from "@/components/buttons/IconButton";
-import { LinkIconButtonProps } from "@/components/buttons/LinkIconButton";
 
 const iconOptionsMapping = Object.entries(ReactIcons).reduce(
   (acc, [key, value]) => {
@@ -33,10 +32,4 @@ const config = {
 
 export default config;
 
-export const Regular_IconButton = (args: IconButtonProps) => (
-  <IconButton {...args} />
-);
-
-export const Link_IconButton = (args: LinkIconButtonProps) => (
-  <LinkIconButton {...args} href="https://google.com" target="_blank" />
-);
+export const Regular_IconButton = (args: IconButtonProps) => <IconButton {...args} />;

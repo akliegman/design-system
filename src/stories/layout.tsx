@@ -1,9 +1,10 @@
 import clsx from "clsx";
 import { Playfair_Display, Poppins } from "next/font/google";
 
-import { Providers } from "@/providers";
+import { ThemeProvider } from "@/providers/theme";
 
 import "../app/index.scss";
+import styles from "./styles.module.scss";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -22,16 +23,18 @@ function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log("hello");
   return (
-    <Providers>
-      <div className={clsx(font.className, fontDisplay.variable)}>
-        {children}
-      </div>
-    </Providers>
+    <div className={clsx(styles[`main`], font.className, fontDisplay.variable)}>{children}</div>
   );
 }
 
-export default function RootStoryDecorator(Story: () => React.ReactNode) {
-  return <RootLayout>{<Story />}</RootLayout>;
+export default function RootStoryDecorator(Story: () => React.ReactNode, context: any) {
+  const { globals } = context;
+  const prefersDark = globals?.theme === "dark";
+
+  return (
+    <ThemeProvider prefersDark={prefersDark}>
+      <RootLayout>{<Story />} </RootLayout>
+    </ThemeProvider>
+  );
 }

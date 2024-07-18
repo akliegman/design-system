@@ -3,56 +3,73 @@
 
 .button {
   transition:
-    background-color var(--transition-duration)
-      var(--transition-timing-function),
+    background-color var(--transition-duration) var(--transition-timing-function),
     color var(--transition-duration) var(--transition-timing-function),
     border-color var(--transition-duration) var(--transition-timing-function),
     var(--skeleton-transition-property) var(--skeleton-transition-duration)
       var(--skeleton-transition-timing-function);
-
-  border: var(--border-width) solid var(--color-neutral-100);
   font-weight: var(--button-font-weight);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-neutral-100);
-  color: var(--color-primary-700);
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
   max-width: fit-content;
-  gap: calc(var(--spacing-3) * 0.75);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
-  padding: var(--spacing-2) var(--spacing-3);
-  border-radius: var(--spacing-2);
-  height: calc(
-    (var(--font-size-base) * var(--line-height-base)) + var(--spacing-2) +
-      var(--spacing-2) + var(--border-width) + var(--border-width)
-  );
+  background-color: var(--color-neutral-200);
+  border: var(--border-width) solid var(--color-neutral-200);
+  color: var(--color-neutral-900);
 
   &:disabled,
   &[aria-disabled="true"],
   &.disabled {
-    background-color: var(--color-neutral-200) !important;
-    color: var(--color-neutral-400) !important;
-    border-color: var(--color-neutral-200) !important;
+    background-color: var(--color-neutral-100) !important;
+    color: var(--color-neutral-300) !important;
+    border-color: var(--color-neutral-100) !important;
     cursor: not-allowed;
   }
 
   @media (hover: hover) {
     &:hover {
       background-color: var(--color-neutral-300);
-      color: var(--color-primary-1000);
+      color: var(--color-neutral-1200);
       border-color: var(--color-neutral-300);
     }
   }
 
   &:active {
     background-color: var(--color-neutral-400);
-    color: var(--color-primary-1000);
+    color: var(--color-primary-1300);
     border-color: var(--color-neutral-400);
+  }
+}
+
+.prefers-dark {
+  background-color: var(--color-neutral-900);
+  border-color: var(--color-neutral-900);
+  color: var(--color-neutral-200);
+
+  &:disabled,
+  &[aria-disabled="true"],
+  &.disabled {
+    background-color: var(--color-neutral-1200) !important;
+    color: var(--color-neutral-1000) !important;
+    border-color: var(--color-neutral-1200) !important;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-neutral-1100);
+      color: var(--color-neutral-300);
+      border-color: var(--color-neutral-1100);
+    }
+  }
+
+  &:active {
+    background-color: var(--color-neutral-1200);
+    color: var(--color-neutral-400);
+    border-color: var(--color-neutral-1200);
   }
 }
 
@@ -67,7 +84,7 @@
     } @else {
       flex-direction: column;
       height: auto;
-      gap: calc(var(--spacing-3) * 0.375);
+      gap: calc(var(--spacing-3) * 0.5);
 
       &:not(.equal-height-width) {
         height: auto;
@@ -77,7 +94,7 @@
 }
 
 @each $variant in $variants {
-  @if $variant != "none" {
+  @if $variant != "default" {
     .variant-#{$variant} {
       background-color: var(--color-#{$variant}-700);
       color: var(--color-white);
@@ -93,28 +110,8 @@
 
       &:active {
         background-color: var(--color-#{$variant}-1100);
-        color: var(--color-#{$variant}-100);
+        color: var(--color-#{$variant}-200);
         border-color: var(--color-#{$variant}-1100);
-      }
-
-      &-inverted {
-        background-color: var(--color-#{$variant}-100);
-        color: var(--color-#{$variant}-700);
-        border-color: var(--color-#{$variant}-100);
-
-        @media (hover: hover) {
-          &:hover {
-            background-color: var(--color-#{$variant}-200);
-            color: var(--color-#{$variant}-1000);
-            border-color: var(--color-#{$variant}-200);
-          }
-        }
-
-        &:active {
-          background-color: var(--color-#{$variant}-200);
-          color: var(--color-#{$variant}-1000);
-          border-color: var(--color-#{$variant}-200);
-        }
       }
 
       &-outline {
@@ -135,6 +132,23 @@
           color: var(--color-#{$variant}-1000);
           border-color: var(--color-#{$variant}-1000);
         }
+
+        &.prefers-dark {
+          color: var(--color-#{$variant}-400);
+          border-color: var(--color-#{$variant}-400);
+
+          @media (hover: hover) {
+            &:hover {
+              color: var(--color-#{$variant}-700);
+              border-color: var(--color-#{$variant}-700);
+            }
+          }
+
+          &:active {
+            color: var(--color-#{$variant}-800);
+            border-color: var(--color-#{$variant}-800);
+          }
+        }
       }
     }
   }
@@ -146,27 +160,67 @@
   padding: var(--spacing-1) var(--spacing-2);
   border-radius: var(--spacing-1);
   height: calc(
-    (var(--font-size-small) * var(--line-height-small)) + var(--spacing-1) +
-      var(--spacing-1) + var(--border-width) + var(--border-width)
+    (var(--font-size-small) * var(--line-height-small)) + var(--spacing-1) + var(--spacing-1) +
+      var(--border-width) + var(--border-width)
   );
-  gap: calc(var(--spacing-1) * 0.75);
+  gap: var(--spacing-2);
 
   &.equal-height-width {
     width: calc(
-      (var(--font-size-small) * var(--line-height-small)) + var(--spacing-1) +
-        var(--spacing-1) + var(--border-width) + var(--border-width)
+      (var(--font-size-small) * var(--line-height-small)) + var(--spacing-1) + var(--spacing-1) +
+        var(--border-width) + var(--border-width)
     );
   }
 
   &.orientation-vertical {
-    gap: calc(var(--spacing-1) * 0.375);
+    gap: calc(var(--spacing-2) * 0.5);
   }
 }
 
-.equal-height-width {
-  padding-left: 0;
-  padding-right: 0;
-  max-width: unset;
+.size-medium {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--spacing-2);
+  height: calc(
+    (var(--font-size-base) * var(--line-height-base)) + var(--spacing-2) + var(--spacing-2) +
+      var(--border-width) + var(--border-width)
+  );
+  gap: var(--spacing-3);
+
+  &.equal-height-width {
+    width: calc(
+      (var(--font-size-base) * var(--line-height-base)) + var(--spacing-2) + var(--spacing-2) +
+        var(--border-width) + var(--border-width)
+    );
+  }
+
+  &.orientation-vertical {
+    gap: calc(var(--spacing-3) * 0.5);
+  }
+}
+
+.size-large {
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-large);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--spacing-3);
+  height: calc(
+    (var(--font-size-large) * var(--line-height-large)) + var(--spacing-3) + var(--spacing-3) +
+      var(--border-width) + var(--border-width)
+  );
+  gap: var(--spacing-4);
+
+  &.equal-height-width {
+    width: calc(
+      (var(--font-size-large) * var(--line-height-large)) + var(--spacing-3) + var(--spacing-3) +
+        var(--border-width) + var(--border-width)
+    );
+  }
+
+  &.orientation-vertical {
+    gap: calc(var(--spacing-4) * 0.5);
+  }
 }
 
 .radius-none {
@@ -186,12 +240,13 @@
 }
 
 .radius-pill {
-  border-radius: calc(
-    (
-      var(--font-size-base) + var(--border-width) + var(--border-width) +
-        (var(--spacing-2) + var(--spacing-2)) * 0.5
-    )
-  );
+  border-radius: 9999px;
+}
+
+.equal-height-width {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: unset;
 }
 
 .full-width {
@@ -201,50 +256,4 @@
 
 .with-shadow {
   box-shadow: var(--box-shadow-medium);
-}
-
-.size-medium {
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
-  padding: var(--spacing-2) var(--spacing-3);
-  border-radius: var(--spacing-2);
-  height: calc(
-    (var(--font-size-base) * var(--line-height-base)) + var(--spacing-2) +
-      var(--spacing-2) + var(--border-width) + var(--border-width)
-  );
-  gap: calc(var(--spacing-2) * 0.75);
-
-  &.equal-height-width {
-    width: calc(
-      (var(--font-size-base) * var(--line-height-base)) + var(--spacing-2) +
-        var(--spacing-2) + var(--border-width) + var(--border-width)
-    );
-  }
-
-  &.orientation-vertical {
-    gap: calc(var(--spacing-2) * 0.375);
-  }
-}
-
-.size-large {
-  font-size: var(--font-size-large);
-  line-height: var(--line-height-large);
-  padding: var(--spacing-3) var(--spacing-4);
-  border-radius: var(--spacing-3);
-  height: calc(
-    (var(--font-size-large) * var(--line-height-large)) + var(--spacing-3) +
-      var(--spacing-3) + var(--border-width) + var(--border-width)
-  );
-  gap: calc(var(--spacing-3) * 0.75);
-
-  &.equal-height-width {
-    width: calc(
-      (var(--font-size-large) * var(--line-height-large)) + var(--spacing-3) +
-        var(--spacing-3) + var(--border-width) + var(--border-width)
-    );
-  }
-
-  &.orientation-vertical {
-    gap: calc(var(--spacing-3) * 0.375);
-  }
 }

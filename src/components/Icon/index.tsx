@@ -7,7 +7,7 @@ import { FaBeer } from "react-icons/fa";
 import { IconLevels, Variants } from "@/global";
 import { useTheme } from "@/providers/theme";
 
-import styles from "@/components/ReactIcon/styles.module.scss";
+import styles from "@/components/Icon/styles.module.scss";
 
 export interface IconProps {
   className?: string;
@@ -17,12 +17,7 @@ export interface IconProps {
 }
 
 export const Icon = (props: IconProps) => {
-  const {
-    className,
-    size = "medium",
-    variant = "none",
-    icon: ReactIcon = FaBeer,
-  } = props;
+  const { className, size = "medium", variant = "default", icon: ReactIcon = FaBeer } = props;
 
   const { themeIsMounted } = useTheme();
 

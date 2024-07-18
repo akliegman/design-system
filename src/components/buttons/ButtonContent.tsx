@@ -8,12 +8,7 @@ import { CustomButtonProps } from "@/components/buttons/Button";
 export interface ButtonContentProps
   extends Omit<
     CustomButtonProps,
-    | "additionalClassName"
-    | "className"
-    | "fullWidth"
-    | "variant"
-    | "radius"
-    | "children"
+    "additionalClassName" | "className" | "fullWidth" | "variant" | "radius" | "children"
   > {
   styles?: Record<string, string>;
 }
