@@ -1,0 +1,380 @@
+{
+  "color": {
+    "$type": "color",
+    "surface": {
+      "$value": "{color.neutral.25}",
+      "$description": "Page background. Everything else sits on top of it.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.950}"
+        }
+      }
+    },
+    "surface-raised": {
+      "$value": "{color.neutral.0}",
+      "$description": "Cards, inputs, popovers and dialogs. One step closer to the viewer than surface.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.900}"
+        }
+      }
+    },
+    "surface-sunken": {
+      "$value": "{color.neutral.50}",
+      "$description": "Wells and tracks set into the page: switch tracks, code blocks, tab lists.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.1000}"
+        }
+      }
+    },
+    "surface-hover": {
+      "$value": "{color.neutral.100}",
+      "$description": "Fill for ghost and neutral controls while hovered.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.850}"
+        }
+      }
+    },
+    "surface-pressed": {
+      "$value": "{color.neutral.150}",
+      "$description": "Fill for ghost and neutral controls while pressed or selected.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.800}"
+        }
+      }
+    },
+    "surface-inverse": {
+      "$value": "{color.neutral.900}",
+      "$description": "Tooltips. Inverts against the page so it reads as transient.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.100}"
+        }
+      }
+    },
+    "fg": {
+      "$value": "{color.neutral.950}",
+      "$description": "Primary text and icons.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.25}"
+        }
+      }
+    },
+    "fg-muted": {
+      "$value": "{color.neutral.600}",
+      "$description": "Secondary text: descriptions, placeholders, metadata. Still meets 4.5:1.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.400}"
+        }
+      }
+    },
+    "fg-inverse": {
+      "$value": "{color.neutral.25}",
+      "$description": "Text on surface-inverse.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.950}"
+        }
+      }
+    },
+    "fg-on-accent": {
+      "$value": "{color.neutral.0}",
+      "$description": "Text and icons on a solid accent fill.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.0}"
+        }
+      }
+    },
+    "fg-on-danger": {
+      "$value": "{color.neutral.0}",
+      "$description": "Text and icons on a solid danger fill.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.0}"
+        }
+      }
+    },
+    "border": {
+      "$value": "{color.neutral.150}",
+      "$description": "Decorative dividers and container edges that carry no meaning on their own.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.850}"
+        }
+      }
+    },
+    "border-strong": {
+      "$value": "{color.neutral.500}",
+      "$description": "Edges that identify a control, like an input or checkbox. Meets 3:1.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.neutral.500}"
+        }
+      }
+    },
+    "accent": {
+      "$value": "{color.ultramarine.600}",
+      "$description": "Solid fill for the primary action and selected controls.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.ultramarine.500}"
+        }
+      }
+    },
+    "accent-hover": {
+      "$value": "{color.ultramarine.700}",
+      "$description": "Accent fill while hovered. Deepens in both themes so white text keeps its contrast.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.ultramarine.600}"
+        }
+      }
+    },
+    "accent-subtle": {
+      "$value": "{color.ultramarine.50}",
+      "$description": "Tinted background for selected rows, accent badges and toggled buttons.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.ultramarine.950}"
+        }
+      }
+    },
+    "accent-text": {
+      "$value": "{color.ultramarine.600}",
+      "$description": "Accent-colored text on surface or accent-subtle: links, active tabs.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.ultramarine.300}"
+        }
+      }
+    },
+    "danger": {
+      "$value": "{color.red.600}",
+      "$description": "Solid fill for destructive actions.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.red.600}"
+        }
+      }
+    },
+    "danger-hover": {
+      "$value": "{color.red.700}",
+      "$description": "Danger fill while hovered.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.red.700}"
+        }
+      }
+    },
+    "danger-subtle": {
+      "$value": "{color.red.50}",
+      "$description": "Tinted background for error badges and banners.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.red.950}"
+        }
+      }
+    },
+    "danger-text": {
+      "$value": "{color.red.700}",
+      "$description": "Error messages and the edge of an invalid field.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.red.300}"
+        }
+      }
+    },
+    "success": {
+      "$value": "{color.green.600}",
+      "$description": "Success icons and indicators.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.green.400}"
+        }
+      }
+    },
+    "success-subtle": {
+      "$value": "{color.green.50}",
+      "$description": "Tinted background for success badges.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.green.950}"
+        }
+      }
+    },
+    "success-text": {
+      "$value": "{color.green.700}",
+      "$description": "Success text on surface or success-subtle.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.green.300}"
+        }
+      }
+    },
+    "warning": {
+      "$value": "{color.amber.600}",
+      "$description": "Warning icons and indicators.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.amber.400}"
+        }
+      }
+    },
+    "warning-subtle": {
+      "$value": "{color.amber.50}",
+      "$description": "Tinted background for warning badges.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.amber.950}"
+        }
+      }
+    },
+    "warning-text": {
+      "$value": "{color.amber.800}",
+      "$description": "Warning text on surface or warning-subtle.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.amber.300}"
+        }
+      }
+    },
+    "focus-ring": {
+      "$value": "{color.ultramarine.500}",
+      "$description": "Keyboard focus outline. Meets 3:1 against every surface.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": "{color.ultramarine.400}"
+        }
+      }
+    },
+    "backdrop": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [0.155, 0.01, 262],
+        "alpha": 0.4
+      },
+      "$description": "Scrim behind modal dialogs. Literal values because aliases cannot carry alpha.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": {
+            "colorSpace": "oklch",
+            "components": [0, 0, 0],
+            "alpha": 0.6
+          }
+        }
+      }
+    },
+    "shadow": {
+      "$value": {
+        "colorSpace": "oklch",
+        "components": [0.155, 0.01, 262],
+        "alpha": 0.08
+      },
+      "$description": "Shadow color. Dark mode needs far more opacity for elevation to read.",
+      "$extensions": {
+        "com.akliegman.modes": {
+          "dark": {
+            "colorSpace": "oklch",
+            "components": [0, 0, 0],
+            "alpha": 0.48
+          }
+        }
+      }
+    }
+  },
+  "elevation": {
+    "$type": "shadow",
+    "raised": {
+      "$value": [
+        {
+          "color": "{color.shadow}",
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 2,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        },
+        {
+          "color": "{color.shadow}",
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 1,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 3,
+            "unit": "px"
+          },
+          "spread": {
+            "value": 0,
+            "unit": "px"
+          }
+        }
+      ],
+      "$description": "Cards and inputs resting on the page."
+    },
+    "overlay": {
+      "$value": [
+        {
+          "color": "{color.shadow}",
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 4,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 8,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -2,
+            "unit": "px"
+          }
+        },
+        {
+          "color": "{color.shadow}",
+          "offsetX": {
+            "value": 0,
+            "unit": "px"
+          },
+          "offsetY": {
+            "value": 16,
+            "unit": "px"
+          },
+          "blur": {
+            "value": 32,
+            "unit": "px"
+          },
+          "spread": {
+            "value": -4,
+            "unit": "px"
+          }
+        }
+      ],
+      "$description": "Popovers, menus and dialogs floating above everything."
+    }
+  }
+}

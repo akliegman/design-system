@@ -1,0 +1,24 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# Design system
+
+A small React component library: 21 components, a token pipeline, and the tests that keep both honest. Behavior comes from [React Aria Components](https://react-spectrum.adobe.com/react-aria/), styling from Tailwind CSS v4 driven entirely by design tokens, and every component ships with stories, unit tests and an automated accessibility check.
+
+## Principles
+
+1. **Semantics before styling.** A heading level is chosen by the document outline, a Button is a button and a LinkButton is a link. Appearance is a separate prop.
+2. **Tokens are the only source of color.** Components reference semantic roles such as `surface` or `fg-muted`. Raw palette values are not available as Tailwind utilities, so they cannot leak into components.
+3. **Accessibility is enforced, not reviewed.** Keyboard behavior is tested, axe runs on every component, and color contrast is computed for every pairing in both themes. A regression fails CI.
+4. **Behavior is borrowed, not rebuilt.** Focus management, keyboard patterns and ARIA wiring come from React Aria. This library adds design decisions on top, not another implementation of a listbox.
+5. **Small and deep.** Fewer components, each with documented variants, states, dos and don'ts. A component is added when a real interface needs it.
+
+## What is here
+
+- **Foundations / Tokens**: color roles in both themes with measured contrast, type scale, spacing, radii, elevation and motion.
+- **Foundations / Accessibility**: what is enforced automatically and how.
+- **Contributing**: how a component gets added.
+- **Components**: each with usage guidance, every meaningful state, and keyboard interaction stories.
+
+Use the theme switch in the toolbar to view any story in light or dark.

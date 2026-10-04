@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Accessibility" />
+
+# Accessibility
+
+The target is WCAG 2.2 AA. Most of it is enforced by tooling rather than by review.
+
+## Enforced in CI
+
+| Check | Where | Fails when |
+| --- | --- | --- |
+| axe-core on every component | each `*.test.tsx`, via `vitest-axe` | any violation in any rendered state, including open popovers and dialogs |
+| Color contrast | `scripts/tokens/tokens.test.ts` | a listed text pair drops below 4.5:1, or a boundary, icon or focus ring pair below 3:1, in either theme |
+| Dark values exist | the token build and the token test | a semantic color has no dark value |
+| Keyboard behavior | each `*.test.tsx` | Tab order, arrow keys, Enter, Space, Escape or focus restoration regress |
+| Accessible names | TypeScript | an `IconButton` or icon-only `ToggleButton` is written without `aria-label` |
+
+axe in jsdom cannot compute color, which is why contrast is tested from token values instead. The `region` rule is disabled in unit tests because it judges whole pages, not components rendered alone.
+
+## In Storybook
+
+The a11y addon runs axe on every story in a real browser, including color contrast. Stories are configured with `a11y: { test: 'error' }`, so a story with a violation fails if the stories are run as tests.
+
+## Built into the components
+
+- **Focus.** Focus rings appear for keyboard and not for mouse, using React Aria's focus-visible tracking. The ring color meets 3:1 on every surface.
+- **Keyboard patterns.** Select, Tabs, RadioGroup and the theme toggle follow the WAI-ARIA authoring practices: one tab stop per composite widget, arrow keys inside it.
+- **Dialogs.** Focus moves in on open, Tab is trapped, Escape closes, the rest of the page is hidden from assistive technology, and focus returns to the trigger.
+- **Loading.** A loading Button keeps focus, sets `aria-busy`, and adds "Loading" to its accessible name.
+- **Links.** External links say they open a new tab. Links in text are underlined so color is not the only cue.
+- **Motion.** Durations collapse to zero under `prefers-reduced-motion`.
+- **Direction.** Layouts use logical properties, and chevrons and switch thumbs mirror in right-to-left text.
+
+## Still a human job
+
+Automated checks catch only part of real issues. Screen reader passes with VoiceOver and NVDA, zoom to 400%, and reading the copy for clarity still need a person, and should happen before a new component is called finished.

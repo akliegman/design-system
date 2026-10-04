@@ -1,0 +1,169 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import type { ColorValue, DimensionValue, Token } from './tokens/load.ts';
+import { loadTokens, referenceOf } from './tokens/load.ts';
+
+const OUTPUT = fileURLToPath(new URL('../src/styles/tokens.css', import.meta.url));
+
+interface ShadowLayer {
+  color: unknown;
+  offsetX: DimensionValue;
+  offsetY: DimensionValue;
+  blur: DimensionValue;
+  spread: DimensionValue;
+  inset?: boolean;
+}
+
+interface TypographyValue {
+  fontSize: DimensionValue;
+  lineHeight: number;
+  letterSpacing: DimensionValue;
+}
+
+const cssVar = (path: string) => `--ds-${path.replaceAll('.', '-')}`;
+const round = (value: number) => Number(value.toFixed(4));
+const dimension = ({ value, unit }: DimensionValue) => `${value}${unit}`;
+
+function color(value: unknown): string {
+  const reference = referenceOf(value);
+  if (reference) return `var(${cssVar(reference)})`;
+  const { components, alpha } = value as ColorValue;
+  const [l, c, h] = components.map(round);
+  return alpha === undefined ? `oklch(${l} ${c} ${h})` : `oklch(${l} ${c} ${h} / ${alpha})`;
+}
+
+function shadow(value: unknown): string {
+  const layers = (Array.isArray(value) ? value : [value]) as ShadowLayer[];
+  return layers
+    .map((layer) =>
+      [
+        layer.inset ? 'inset' : '',
+        dimension(layer.offsetX),
+        dimension(layer.offsetY),
+        dimension(layer.blur),
+        dimension(layer.spread),
+        color(layer.color),
+      ]
+        .filter(Boolean)
+        .join(' '),
+    )
+    .join(', ');
+}
+
+/** Custom properties for one token. Typography expands to size, line height and tracking. */
+function declarations(token: Token): [name: string, value: string][] {
+  const name = cssVar(token.path);
+  const reference = referenceOf(token.value);
+  if (reference && token.type !== 'color') return [[name, `var(${cssVar(reference)})`]];
+
+  switch (token.type) {
+    case 'color':
+      return [
+        [
+          name,
+          token.dark === undefined ? color(token.value) : `light-dark(${color(token.value)}, ${color(token.dark)})`,
+        ],
+      ];
+    case 'dimension':
+    case 'duration':
+      return [[name, dimension(token.value as DimensionValue)]];
+    case 'cubicBezier':
+      return [[name, `cubic-bezier(${(token.value as number[]).join(', ')})`]];
+    case 'fontFamily':
+      return [
+        [name, (token.value as string[]).map((family) => (family.includes(' ') ? `'${family}'` : family)).join(', ')],
+      ];
+    case 'shadow':
+      return [[name, shadow(token.value)]];
+    case 'typography': {
+      const value = token.value as TypographyValue;
+      return [
+        [`${name}-size`, dimension(value.fontSize)],
+        [`${name}-line-height`, String(value.lineHeight)],
+        [`${name}-tracking`, dimension(value.letterSpacing)],
+      ];
+    }
+  }
+}
+
+/** Maps tokens onto Tailwind theme variables. Only semantic colors become color utilities. */
+function themeMappings(token: Token): [name: string, value: string][] {
+  const source = `var(${cssVar(token.path)})`;
+  const key = token.path.split('.').slice(1).join('-');
+
+  if (token.layer === 'semantic' && token.type === 'color') return [[`--color-${key}`, source]];
+  if (token.type === 'shadow') return [[`--shadow-${key}`, source]];
+  if (token.path.startsWith('radius.')) return [[`--radius-${key}`, source]];
+  if (token.path === 'spacing.base') return [['--spacing', source]];
+  if (token.path.startsWith('font.family.')) return [[`--font-${token.path.split('.')[2]}`, source]];
+  if (token.path.startsWith('ease.')) return [[`--ease-${key}`, source]];
+  if (token.type === 'typography') {
+    return [
+      [`--text-${key}`, `var(${cssVar(token.path)}-size)`],
+      [`--text-${key}--line-height`, `var(${cssVar(token.path)}-line-height)`],
+      [`--text-${key}--letter-spacing`, `var(${cssVar(token.path)}-tracking)`],
+    ];
+  }
+  return [];
+}
+
+const block = (selector: string, lines: [string, string][], indent = '') =>
+  `${indent}${selector} {\n${lines.map(([name, value]) => `${indent}  ${name}: ${value};`).join('\n')}\n${indent}}`;
+
+function generateCss(tokens: Token[]): string {
+  const primitives = tokens.filter((token) => token.layer === 'primitive').flatMap(declarations);
+  const semantic = tokens.filter((token) => token.layer === 'semantic').flatMap(declarations);
+  const durations = tokens
+    .filter((token) => token.type === 'duration')
+    .map((token): [string, string] => [cssVar(token.path), '0ms']);
+
+  const theme: [string, string][] = [
+    ['--color-*', 'initial'],
+    ['--shadow-*', 'initial'],
+    ['--radius-*', 'initial'],
+    ['--text-*', 'initial'],
+    ['--ease-*', 'initial'],
+    ...tokens.flatMap(themeMappings),
+    ['--default-transition-duration', 'var(--ds-duration-base)'],
+    ['--default-transition-timing-function', 'var(--ds-ease-standard)'],
+  ];
+
+  return [
+    '/*',
+    ' * Generated by scripts/build-tokens.ts from tokens/primitives.json and tokens/semantic.json.',
+    ' * Do not edit. Change the JSON and run `pnpm tokens:build`.',
+    ' */',
+    '',
+    block(':root', [['color-scheme', 'light dark'], ...primitives]),
+    '',
+    '/* Re-declared on every themed subtree so light-dark() resolves against that subtree, including where the build',
+    '   polyfills light-dark() with variables for browsers that lack it. */',
+    block(':root,\n[data-theme]', semantic),
+    '',
+    block('[data-theme="light"]', [['color-scheme', 'light']]),
+    '',
+    block('[data-theme="dark"]', [['color-scheme', 'dark']]),
+    '',
+    `@media (prefers-reduced-motion: reduce) {\n${block(':root', durations, '  ')}\n}`,
+    '',
+    block('@theme inline', theme),
+    '',
+  ].join('\n');
+}
+
+const css = generateCss(loadTokens());
+
+if (process.argv.includes('--check')) {
+  let current = '';
+  try {
+    current = readFileSync(OUTPUT, 'utf8');
+  } catch {}
+  if (current !== css) {
+    process.stderr.write('src/styles/tokens.css is stale. Run `pnpm tokens:build` and commit the result.\n');
+    process.exit(1);
+  }
+  process.stdout.write('tokens.css is up to date.\n');
+} else {
+  writeFileSync(OUTPUT, css);
+  process.stdout.write(`Wrote ${OUTPUT}\n`);
+}

@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Contributing" />
+
+# Contributing
+
+A component is added when a real interface needs it, not in anticipation. Every component follows the same path.
+
+## 1. Tokens first
+
+If the component needs a color, size or duration that does not exist, add it to `tokens/` before writing any component code.
+
+- Raw values go in `primitives.json`. Semantic roles go in `semantic.json`, with both a light and a dark value.
+- Run `pnpm tokens:build` and commit the regenerated `src/styles/tokens.css`.
+- If a new pair of foreground and background will be rendered, add it to `src/tokens/contrastPairs.ts` so the contrast test covers it.
+
+## 2. Build on React Aria
+
+Start from the React Aria component that already implements the behavior. Do not hand-roll focus management, keyboard handling or ARIA attributes that React Aria provides.
+
+## 3. Write the component
+
+Create `src/components/<Name>/` with `<Name>.tsx` and an `index.ts` that re-exports it by name.
+
+- Define styles with `cva`. Each variant group and each value gets a one-line JSDoc that says when to use it.
+- Use semantic token utilities only. The Tailwind theme has no raw palette, so `text-blue-500` will not compile to anything.
+- Merge `className` last with `cn()`, using `composeRenderProps` when the React Aria component accepts a render function.
+- Accept `ref` as a prop and export the props interface.
+
+## 4. Stories
+
+`<Name>.stories.tsx` needs:
+
+- A `Default` story with `argTypes` descriptions that explain when to use each prop.
+- One story per meaningful state: disabled, invalid, loading, long content, and right-to-left where layout direction matters.
+- At least one `play` function that drives the component with the keyboard.
+- A component description with three dos and three don'ts.
+
+## 5. Tests
+
+`<Name>.test.tsx` covers keyboard behavior, controlled and uncontrolled use where both exist, every state, and ends with an axe assertion imported from `src/test/axe.ts`. The assertion must pass.
+
+## 6. Gates
+
+Before opening a pull request, all of these pass locally and in CI:
+
+```sh
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm tokens:check
+pnpm build-storybook
+```

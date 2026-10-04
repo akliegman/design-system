@@ -1,9 +1,0 @@
-export { Heading } from "@/components/Heading";
-export { Icon } from "@/components/Icon";
-export { Link } from "@/components/Link";
-export { Breadcrumbs } from "@/components/Breadcrumbs";
-export { Button } from "@/components/buttons/Button";
-export { IconButton } from "@/components/buttons/IconButton";
-export { LinkButton } from "@/components/buttons/LinkButton";
-export { LinkIconButton } from "@/components/buttons/LinkIconButton";
-export { ThemeWrapper } from "@/components/ThemeWrapper";

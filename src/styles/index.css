@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    background-color: var(--color-surface);
+    color: var(--color-fg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-subtle);
+    color: var(--color-fg);
+  }
+}
+
+@utility focus-ring {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+@keyframes ds-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes ds-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes ds-pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--ds-pop-offset, 4px)) scale(0.98);
+  }
+}
+
+@keyframes ds-pop-out {
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+@utility animate-fade-in {
+  animation: ds-fade-in var(--ds-duration-slow) var(--ds-ease-enter);
+}
+
+@utility animate-fade-out {
+  animation: ds-fade-out var(--ds-duration-base) var(--ds-ease-exit) forwards;
+}
+
+@utility animate-pop-in {
+  animation: ds-pop-in var(--ds-duration-slow) var(--ds-ease-enter);
+}
+
+@utility animate-pop-out {
+  animation: ds-pop-out var(--ds-duration-base) var(--ds-ease-exit) forwards;
+}

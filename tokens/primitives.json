@@ -1,0 +1,595 @@
+{
+  "color": {
+    "$type": "color",
+    "ultramarine": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.97, 0.014, 266]
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.935, 0.03, 266]
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.88, 0.058, 266]
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.8, 0.1, 266]
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.7, 0.155, 266]
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.56, 0.22, 266]
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.52, 0.23, 266]
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.45, 0.212, 266]
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.38, 0.184, 266]
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.3, 0.143, 266]
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.24, 0.104, 266]
+        }
+      },
+      "$description": "The accent family. Hue 266 sits between blue and violet; chroma peaks at 500 to 600."
+    },
+    "red": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.97, 0.013, 25]
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.935, 0.032, 25]
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.88, 0.062, 25]
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.8, 0.114, 25]
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.7, 0.179, 25]
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.6, 0.21, 25]
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.52, 0.21, 25]
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.45, 0.183, 25]
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.38, 0.154, 25]
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.3, 0.122, 25]
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.24, 0.095, 25]
+        }
+      },
+      "$description": "Destructive and error states."
+    },
+    "green": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.97, 0.019, 152]
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.935, 0.035, 152]
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.88, 0.064, 152]
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.8, 0.096, 152]
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.7, 0.136, 152]
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.6, 0.158, 152]
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.52, 0.136, 152]
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.45, 0.117, 152]
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.38, 0.1, 152]
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.3, 0.079, 152]
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.24, 0.064, 152]
+        }
+      },
+      "$description": "Success and confirmation states."
+    },
+    "amber": {
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.97, 0.022, 78]
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.94, 0.045, 78]
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.9, 0.085, 78]
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.84, 0.13, 76]
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.78, 0.155, 72]
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.7, 0.155, 66]
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.6, 0.135, 60]
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.5, 0.11, 56]
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.41, 0.088, 55]
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.32, 0.068, 55]
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.25, 0.052, 55]
+        }
+      },
+      "$description": "Warnings. The hue rotates from 78 toward 55 as it darkens so deep steps stay amber instead of olive."
+    },
+    "neutral": {
+      "0": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [1, 0, 262]
+        }
+      },
+      "25": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.985, 0.002, 262]
+        }
+      },
+      "50": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.97, 0.004, 262]
+        }
+      },
+      "100": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.945, 0.006, 262]
+        }
+      },
+      "150": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.915, 0.008, 262]
+        }
+      },
+      "200": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.88, 0.01, 262]
+        }
+      },
+      "300": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.8, 0.013, 262]
+        }
+      },
+      "400": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.7, 0.016, 262]
+        }
+      },
+      "500": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.585, 0.018, 262]
+        }
+      },
+      "600": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.5, 0.02, 262]
+        }
+      },
+      "700": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.42, 0.02, 262]
+        }
+      },
+      "800": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.34, 0.018, 262]
+        }
+      },
+      "850": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.29, 0.016, 262]
+        }
+      },
+      "900": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.245, 0.014, 262]
+        }
+      },
+      "950": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.195, 0.012, 262]
+        }
+      },
+      "1000": {
+        "$value": {
+          "colorSpace": "oklch",
+          "components": [0.155, 0.01, 262]
+        }
+      },
+      "$description": "Cool slate neutrals, hue 262, chroma kept under 0.02 so greys read as clean rather than tinted."
+    }
+  },
+  "spacing": {
+    "$type": "dimension",
+    "base": {
+      "$value": {
+        "value": 0.25,
+        "unit": "rem"
+      },
+      "$description": "One spacing step. Tailwind multiplies it, so p-4 is four steps (16px)."
+    }
+  },
+  "radius": {
+    "$type": "dimension",
+    "sm": {
+      "$value": {
+        "value": 4,
+        "unit": "px"
+      }
+    },
+    "md": {
+      "$value": {
+        "value": 6,
+        "unit": "px"
+      }
+    },
+    "lg": {
+      "$value": {
+        "value": 8,
+        "unit": "px"
+      }
+    },
+    "xl": {
+      "$value": {
+        "value": 12,
+        "unit": "px"
+      }
+    },
+    "full": {
+      "$value": {
+        "value": 9999,
+        "unit": "px"
+      }
+    }
+  },
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "sans": {
+        "$value": ["Geist Variable", "ui-sans-serif", "system-ui", "sans-serif"]
+      },
+      "mono": {
+        "$value": ["Geist Mono Variable", "ui-monospace", "SFMono-Regular", "monospace"]
+      }
+    }
+  },
+  "type": {
+    "$type": "typography",
+    "$description": "Type scale. Body copy is 14px; steps above md tighten tracking as they grow.",
+    "xs": {
+      "$value": {
+        "fontSize": {
+          "value": 0.75,
+          "unit": "rem"
+        },
+        "lineHeight": 1.334,
+        "letterSpacing": {
+          "value": 0.01,
+          "unit": "em"
+        }
+      }
+    },
+    "sm": {
+      "$value": {
+        "fontSize": {
+          "value": 0.8125,
+          "unit": "rem"
+        },
+        "lineHeight": 1.54,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "em"
+        }
+      }
+    },
+    "base": {
+      "$value": {
+        "fontSize": {
+          "value": 0.875,
+          "unit": "rem"
+        },
+        "lineHeight": 1.572,
+        "letterSpacing": {
+          "value": 0,
+          "unit": "em"
+        }
+      }
+    },
+    "md": {
+      "$value": {
+        "fontSize": {
+          "value": 1,
+          "unit": "rem"
+        },
+        "lineHeight": 1.5,
+        "letterSpacing": {
+          "value": -0.005,
+          "unit": "em"
+        }
+      }
+    },
+    "lg": {
+      "$value": {
+        "fontSize": {
+          "value": 1.125,
+          "unit": "rem"
+        },
+        "lineHeight": 1.445,
+        "letterSpacing": {
+          "value": -0.01,
+          "unit": "em"
+        }
+      }
+    },
+    "xl": {
+      "$value": {
+        "fontSize": {
+          "value": 1.375,
+          "unit": "rem"
+        },
+        "lineHeight": 1.364,
+        "letterSpacing": {
+          "value": -0.015,
+          "unit": "em"
+        }
+      }
+    },
+    "2xl": {
+      "$value": {
+        "fontSize": {
+          "value": 1.75,
+          "unit": "rem"
+        },
+        "lineHeight": 1.286,
+        "letterSpacing": {
+          "value": -0.02,
+          "unit": "em"
+        }
+      }
+    },
+    "3xl": {
+      "$value": {
+        "fontSize": {
+          "value": 2.25,
+          "unit": "rem"
+        },
+        "lineHeight": 1.223,
+        "letterSpacing": {
+          "value": -0.025,
+          "unit": "em"
+        }
+      }
+    },
+    "4xl": {
+      "$value": {
+        "fontSize": {
+          "value": 3,
+          "unit": "rem"
+        },
+        "lineHeight": 1.167,
+        "letterSpacing": {
+          "value": -0.03,
+          "unit": "em"
+        }
+      }
+    }
+  },
+  "duration": {
+    "$type": "duration",
+    "$description": "Collapses to 0ms under prefers-reduced-motion.",
+    "fast": {
+      "$value": {
+        "value": 100,
+        "unit": "ms"
+      },
+      "$description": "Hover and press feedback."
+    },
+    "base": {
+      "$value": {
+        "value": 160,
+        "unit": "ms"
+      },
+      "$description": "Small state changes: toggles, checks, tab indicator."
+    },
+    "slow": {
+      "$value": {
+        "value": 240,
+        "unit": "ms"
+      },
+      "$description": "Overlays entering: dialogs, popovers."
+    }
+  },
+  "ease": {
+    "$type": "cubicBezier",
+    "standard": {
+      "$value": [0.2, 0, 0, 1],
+      "$description": "Default for anything that moves or changes state."
+    },
+    "enter": {
+      "$value": [0, 0, 0.2, 1],
+      "$description": "Elements arriving on screen."
+    },
+    "exit": {
+      "$value": [0.4, 0, 1, 1],
+      "$description": "Elements leaving the screen."
+    }
+  }
+}

@@ -1,0 +1,69 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import { ColorRoles } from './blocks/ColorRoles';
+import { ContrastTable } from './blocks/ContrastTable';
+import { ElevationScale, MotionTokens, RadiusScale, SpacingScale, TypeScale } from './blocks/Scales';
+
+<Meta title="Foundations/Tokens" />
+
+# Tokens
+
+Tokens live in `tokens/` as [Design Tokens Community Group](https://www.designtokens.org/) JSON, in two layers.
+
+- **`primitives.json`** holds raw values: oklch color palettes, the spacing base, radii, the type scale, durations and easings. Primitives never reference other tokens.
+- **`semantic.json`** holds roles. Each role names a purpose (`surface-raised`, `fg-muted`, `danger-text`) and aliases a primitive. Every color role has a light value in `$value` and a dark value in `$extensions["com.akliegman.modes"].dark`; the build fails if one is missing.
+
+`pnpm tokens:build` turns both files into `src/styles/tokens.css`. Each semantic color becomes a `light-dark()` value, so a single `color-scheme` change on any element switches its whole subtree. A `@theme inline` block maps roles onto Tailwind, after clearing Tailwind's default palette, so `bg-surface` exists and `bg-blue-500` does not. `pnpm tokens:check` fails CI when the CSS is stale.
+
+## Color roles
+
+Rendered from the generated CSS. The left column is a light subtree and the right a dark one, on the same page.
+
+<Unstyled>
+  <ColorRoles />
+</Unstyled>
+
+## Contrast
+
+Every foreground and background pair that a component renders, measured in this browser from computed styles. `scripts/tokens/tokens.test.ts` computes the same pairs from the token JSON and fails below 4.5:1 for text or 3:1 for control boundaries, meaningful icons and focus rings. Primitives are also checked to sit inside the sRGB gamut, so no browser has to clip them.
+
+<Unstyled>
+  <ContrastTable />
+</Unstyled>
+
+## Type scale
+
+Geist for UI and Geist Mono for code and identifiers. Body text is 14px. Tracking tightens as size increases.
+
+<Unstyled>
+  <TypeScale />
+</Unstyled>
+
+## Spacing
+
+One base step of 4px. Tailwind multiplies it, so `p-4` is 16px and `gap-1.5` is 6px.
+
+<Unstyled>
+  <SpacingScale />
+</Unstyled>
+
+## Radii
+
+<Unstyled>
+  <RadiusScale />
+</Unstyled>
+
+## Elevation
+
+Two levels. Dark mode uses a much stronger shadow color, because a shadow at light-mode opacity disappears on a dark surface.
+
+<Unstyled>
+  <ElevationScale />
+</Unstyled>
+
+## Motion
+
+Durations are short and collapse to `0ms` under `prefers-reduced-motion`, which turns every transition and enter or exit animation into an instant state change.
+
+<Unstyled>
+  <MotionTokens />
+</Unstyled>
